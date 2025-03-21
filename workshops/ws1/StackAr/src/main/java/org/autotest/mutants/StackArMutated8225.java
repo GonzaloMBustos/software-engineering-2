@@ -1,20 +1,20 @@
 package org.autotest.mutants;
 
 /**
- * EmptyReturnsMutator: Se reemplazó b.toString() por "" en la línea 99.
+ * MathMutator: Se reemplazó + por - en la línea 66.
  */
-public class StackArMutated4078 extends org.autotest.Stack {
+public class StackArMutated8225 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
 
     private final java.lang.Object[] elems;
 
     private int readIndex = -1;
 
-    public StackArMutated4078() {
-        this(org.autotest.mutants.StackArMutated4078.DEFAULT_CAPACITY);
+    public StackArMutated8225() {
+        this(org.autotest.mutants.StackArMutated8225.DEFAULT_CAPACITY);
     }
 
-    public StackArMutated4078(int capacity) throws java.lang.IllegalArgumentException {
+    public StackArMutated8225(int capacity) throws java.lang.IllegalArgumentException {
         if (capacity < 0) {
             throw new java.lang.IllegalArgumentException();
         }
@@ -63,7 +63,7 @@ public class StackArMutated4078 extends org.autotest.Stack {
         final int prime = 31;
         int result = 1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
-        result = (prime * result) + readIndex;
+        result = (prime * result) - readIndex;
         return result;
     }
 
@@ -78,7 +78,7 @@ public class StackArMutated4078 extends org.autotest.Stack {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        org.autotest.mutants.StackArMutated4078 other = ((org.autotest.mutants.StackArMutated4078) (obj));
+        org.autotest.mutants.StackArMutated8225 other = ((org.autotest.mutants.StackArMutated8225) (obj));
         if (!java.util.Arrays.equals(elems, other.elems)) {
             return false;
         }
@@ -101,6 +101,6 @@ public class StackArMutated4078 extends org.autotest.Stack {
             b.append(s);
         }
         b.append("]");
-        return "";
+        return b.toString();
     }
 }

@@ -1,20 +1,20 @@
 package org.autotest.mutants;
 
 /**
- * EmptyReturnsMutator: Se reemplazó result por 0 en la línea 67.
+ * ConditionalsBoundaryMutator: Se reemplazó <= por < en la línea 90.
  */
-public class StackArMutated7292 extends org.autotest.Stack {
+public class StackArMutated7177 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
 
     private final java.lang.Object[] elems;
 
     private int readIndex = -1;
 
-    public StackArMutated7292() {
-        this(org.autotest.mutants.StackArMutated7292.DEFAULT_CAPACITY);
+    public StackArMutated7177() {
+        this(org.autotest.mutants.StackArMutated7177.DEFAULT_CAPACITY);
     }
 
-    public StackArMutated7292(int capacity) throws java.lang.IllegalArgumentException {
+    public StackArMutated7177(int capacity) throws java.lang.IllegalArgumentException {
         if (capacity < 0) {
             throw new java.lang.IllegalArgumentException();
         }
@@ -64,7 +64,7 @@ public class StackArMutated7292 extends org.autotest.Stack {
         int result = 1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
         result = (prime * result) + readIndex;
-        return 0;
+        return result;
     }
 
     @java.lang.Override
@@ -78,7 +78,7 @@ public class StackArMutated7292 extends org.autotest.Stack {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        org.autotest.mutants.StackArMutated7292 other = ((org.autotest.mutants.StackArMutated7292) (obj));
+        org.autotest.mutants.StackArMutated7177 other = ((org.autotest.mutants.StackArMutated7177) (obj));
         if (!java.util.Arrays.equals(elems, other.elems)) {
             return false;
         }
@@ -92,7 +92,7 @@ public class StackArMutated7292 extends org.autotest.Stack {
     public java.lang.String toString() {
         java.lang.StringBuffer b = new java.lang.StringBuffer();
         b.append("[");
-        for (int i = 0; i <= readIndex; i++) {
+        for (int i = 0; i < readIndex; i++) {
             if (i > 0) {
                 b.append(",");
             }

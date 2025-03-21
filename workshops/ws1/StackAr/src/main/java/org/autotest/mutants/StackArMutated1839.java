@@ -1,21 +1,21 @@
 package org.autotest.mutants;
 
 /**
- * MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.
+ * MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 18.
  */
-public class StackArMutated2083 extends org.autotest.Stack {
+public class StackArMutated1839 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
 
     private final java.lang.Object[] elems;
 
     private int readIndex = -1;
 
-    public StackArMutated2083() {
-        this(org.autotest.mutants.StackArMutated2083.DEFAULT_CAPACITY);
+    public StackArMutated1839() {
+        this(org.autotest.mutants.StackArMutated1839.DEFAULT_CAPACITY);
     }
 
-    public StackArMutated2083(int capacity) throws java.lang.IllegalArgumentException {
-        if (capacity < 0) {
+    public StackArMutated1839(int capacity) throws java.lang.IllegalArgumentException {
+        if (capacity < -1) {
             throw new java.lang.IllegalArgumentException();
         }
         this.elems = new java.lang.Object[capacity];
@@ -61,7 +61,7 @@ public class StackArMutated2083 extends org.autotest.Stack {
     @java.lang.Override
     public int hashCode() {
         final int prime = 31;
-        int result = -1;
+        int result = 1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
         result = (prime * result) + readIndex;
         return result;
@@ -78,7 +78,7 @@ public class StackArMutated2083 extends org.autotest.Stack {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        org.autotest.mutants.StackArMutated2083 other = ((org.autotest.mutants.StackArMutated2083) (obj));
+        org.autotest.mutants.StackArMutated1839 other = ((org.autotest.mutants.StackArMutated1839) (obj));
         if (!java.util.Arrays.equals(elems, other.elems)) {
             return false;
         }

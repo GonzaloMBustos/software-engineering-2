@@ -1,21 +1,21 @@
 package org.autotest.mutants;
 
 /**
- * ConditionalsBoundaryMutator: Se reemplazó < por <= en la línea 18.
+ * MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 91.
  */
-public class StackArMutated3168 extends org.autotest.Stack {
+public class StackArMutated6949 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
 
     private final java.lang.Object[] elems;
 
     private int readIndex = -1;
 
-    public StackArMutated3168() {
-        this(org.autotest.mutants.StackArMutated3168.DEFAULT_CAPACITY);
+    public StackArMutated6949() {
+        this(org.autotest.mutants.StackArMutated6949.DEFAULT_CAPACITY);
     }
 
-    public StackArMutated3168(int capacity) throws java.lang.IllegalArgumentException {
-        if (capacity <= 0) {
+    public StackArMutated6949(int capacity) throws java.lang.IllegalArgumentException {
+        if (capacity < 0) {
             throw new java.lang.IllegalArgumentException();
         }
         this.elems = new java.lang.Object[capacity];
@@ -78,7 +78,7 @@ public class StackArMutated3168 extends org.autotest.Stack {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        org.autotest.mutants.StackArMutated3168 other = ((org.autotest.mutants.StackArMutated3168) (obj));
+        org.autotest.mutants.StackArMutated6949 other = ((org.autotest.mutants.StackArMutated6949) (obj));
         if (!java.util.Arrays.equals(elems, other.elems)) {
             return false;
         }
@@ -93,7 +93,7 @@ public class StackArMutated3168 extends org.autotest.Stack {
         java.lang.StringBuffer b = new java.lang.StringBuffer();
         b.append("[");
         for (int i = 0; i <= readIndex; i++) {
-            if (i > 0) {
+            if (i > -1) {
                 b.append(",");
             }
             java.lang.Object o = elems[i];

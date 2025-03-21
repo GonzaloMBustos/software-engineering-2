@@ -18,17 +18,49 @@ public class MathMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
         // COMPLETAR
-        return false;
+        if (!(candidate instanceof CtBinaryOperator)) {
+            return false;
+        }
+
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        List<BinaryOperatorKind> targetOperations = Arrays.asList(
+                BinaryOperatorKind.PLUS, // +
+                BinaryOperatorKind.MINUS, // -
+                BinaryOperatorKind.MUL, // *
+                BinaryOperatorKind.DIV // /
+        );
+        return targetOperations.contains(op.getKind());
     }
 
     @Override
     public void process(CtElement candidate) {
         // COMPLETAR
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        op.setKind(getReplacement(op.getKind()));
+    }
+
+    public BinaryOperatorKind getReplacement(BinaryOperatorKind kind) {
+        // This are not all possible combinations, should we consider all possible combinations?
+        // How about division by zero?
+        switch (kind) {
+            case PLUS:
+                return BinaryOperatorKind.MINUS;
+            case MINUS:
+                return BinaryOperatorKind.PLUS;
+            case MUL:
+                return BinaryOperatorKind.DIV;
+            case DIV:
+                return BinaryOperatorKind.MUL;
+        }
+        return null;
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
         // COMPLETAR
-        return null;
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        return this.getClass().getSimpleName() + ": Se reemplazó " +
+                BinaryOperatorKindToString.get(op.getKind()) + " por " + BinaryOperatorKindToString.get(getReplacement(op.getKind())) +
+                " en la línea " + op.getPosition().getLine() + ".";
     }
 }
