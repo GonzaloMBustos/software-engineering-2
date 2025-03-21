@@ -1,0 +1,15 @@
+Se generaron 14 mutantes:
+	StackArMutated5856 - EmptyReturnsMutator: Se reemplazó readIndex + 1 por 0 en la línea 25.
+	StackArMutated7292 - EmptyReturnsMutator: Se reemplazó result por 0 en la línea 67.
+	StackArMutated4078 - EmptyReturnsMutator: Se reemplazó b.toString() por "" en la línea 99.
+	StackArMutated766 - MinusOneConstantMutator: Se reemplazó 10 por -1 en la línea 7.
+	StackArMutated310 - MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 18.
+	StackArMutated5772 - MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 25.
+	StackArMutated9589 - MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 29.
+	StackArMutated5294 - MinusOneConstantMutator: Se reemplazó 31 por -1 en la línea 63.
+	StackArMutated2083 - MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.
+	StackArMutated8841 - MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 90.
+	StackArMutated9210 - MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 91.
+	StackArMutated3168 - ConditionalsBoundaryMutator: Se reemplazó < por <= en la línea 18.
+	StackArMutated3821 - ConditionalsBoundaryMutator: Se reemplazó <= por < en la línea 90.
+	StackArMutated5020 - ConditionalsBoundaryMutator: Se reemplazó > por >= en la línea 91.

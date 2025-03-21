@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.autotest.StackTests2" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-21T03:51:01" hostname="gb7" time="0.021">
+  <properties/>
+  <testcase name="run()" classname="org.autotest.StackTests2" time="0.021"/>
+  <system-out><![CDATA[-> Corriendo tests de StackTests2 para la clase: StackAr (Stack original)
+-> Corriendo tests de StackTests2 para la clase: StackArMutated9210 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 91.)
+   [X] Falló el test testToStringMethod en la línea 55
+-> Corriendo tests de StackTests2 para la clase: StackArMutated9589 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 29.)
+   [X] Falló el test testDefaultConstructor en la línea 20
+-> Corriendo tests de StackTests2 para la clase: StackArMutated5856 (EmptyReturnsMutator: Se reemplazó readIndex + 1 por 0 en la línea 25.)
+   [X] Falló el test testSizeIncreasesByOne en la línea 15
+-> Corriendo tests de StackTests2 para la clase: StackArMutated3821 (ConditionalsBoundaryMutator: Se reemplazó <= por < en la línea 90.)
+   [X] Falló el test testToStringMethod en la línea 55
+-> Corriendo tests de StackTests2 para la clase: StackArMutated310 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 18.)
+   [X] Falló el test testConstructorWithNegativeCapacity en la línea 28
+-> Corriendo tests de StackTests2 para la clase: StackArMutated3168 (ConditionalsBoundaryMutator: Se reemplazó < por <= en la línea 18.)
+-> Corriendo tests de StackTests2 para la clase: StackArMutated8841 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 90.)
+   [X] Falló el test testToStringMethod en la línea 53
+-> Corriendo tests de StackTests2 para la clase: StackArMutated5772 (MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 25.)
+   [X] Falló el test testSizeIncreasesByOne en la línea 13
+-> Corriendo tests de StackTests2 para la clase: StackArMutated4078 (EmptyReturnsMutator: Se reemplazó b.toString() por "" en la línea 99.)
+   [X] Falló el test testToStringMethod en la línea 53
+-> Corriendo tests de StackTests2 para la clase: StackArMutated5294 (MinusOneConstantMutator: Se reemplazó 31 por -1 en la línea 63.)
+-> Corriendo tests de StackTests2 para la clase: StackArMutated5020 (ConditionalsBoundaryMutator: Se reemplazó > por >= en la línea 91.)
+   [X] Falló el test testToStringMethod en la línea 55
+-> Corriendo tests de StackTests2 para la clase: StackArMutated2083 (MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.)
+-> Corriendo tests de StackTests2 para la clase: StackArMutated7292 (EmptyReturnsMutator: Se reemplazó result por 0 en la línea 67.)
+-> Corriendo tests de StackTests2 para la clase: StackArMutated766 (MinusOneConstantMutator: Se reemplazó 10 por -1 en la línea 7.)
+   [X] Falló el test testSizeIncreasesByOne en la línea 12
+-> Mutantes generados: 14
+-> Mutantes eliminados: 10
+    - StackArMutated3821 (ConditionalsBoundaryMutator: Se reemplazó <= por < en la línea 90.)
+    - StackArMutated5856 (EmptyReturnsMutator: Se reemplazó readIndex + 1 por 0 en la línea 25.)
+    - StackArMutated9589 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 29.)
+    - StackArMutated8841 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 90.)
+    - StackArMutated5772 (MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 25.)
+    - StackArMutated4078 (EmptyReturnsMutator: Se reemplazó b.toString() por "" en la línea 99.)
+    - StackArMutated766 (MinusOneConstantMutator: Se reemplazó 10 por -1 en la línea 7.)
+    - StackArMutated310 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 18.)
+    - StackArMutated5020 (ConditionalsBoundaryMutator: Se reemplazó > por >= en la línea 91.)
+    - StackArMutated9210 (MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 91.)
+-> Mutantes vivos: 4
+    - StackArMutated3168 (ConditionalsBoundaryMutator: Se reemplazó < por <= en la línea 18.)
+    - StackArMutated5294 (MinusOneConstantMutator: Se reemplazó 31 por -1 en la línea 63.)
+    - StackArMutated7292 (EmptyReturnsMutator: Se reemplazó result por 0 en la línea 67.)
+    - StackArMutated2083 (MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.)
+-> Mutation score: 71%
+]]></system-out>
+  <system-err><![CDATA[[Test worker] INFO org.reflections.Reflections - Reflections took 7 ms to scan 1 urls, producing 1 keys and 14 values
+]]></system-err>
+</testsuite>
