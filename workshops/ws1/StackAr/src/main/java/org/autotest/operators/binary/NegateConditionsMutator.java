@@ -19,17 +19,53 @@ public class NegateConditionsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
         // COMPLETAR
-        return false;
+        if (!(candidate instanceof CtBinaryOperator)) {
+            return false;
+        }
+
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        List<BinaryOperatorKind> targetOperations = Arrays.asList(
+                BinaryOperatorKind.EQ, // ==
+                BinaryOperatorKind.NE, // !=
+                BinaryOperatorKind.GE, // >=
+                BinaryOperatorKind.GT, // >
+                BinaryOperatorKind.LE, // <=
+                BinaryOperatorKind.LT // <
+        );
+        return targetOperations.contains(op.getKind());
     }
 
     @Override
     public void process(CtElement candidate) {
         // COMPLETAR
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        op.setKind(getReplacement(op.getKind()));
+    }
+
+    public BinaryOperatorKind getReplacement(BinaryOperatorKind kind) {
+        switch (kind) {
+            case EQ:
+                return BinaryOperatorKind.NE;
+            case NE:
+                return BinaryOperatorKind.EQ;
+            case GE:
+                return BinaryOperatorKind.LT;
+            case GT:
+                return BinaryOperatorKind.LE;
+            case LE:
+                return BinaryOperatorKind.GT;
+            case LT:
+                return BinaryOperatorKind.GE;
+        }
+        return null;
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
         // COMPLETAR
-        return null;
+        CtBinaryOperator op = (CtBinaryOperator)candidate;
+        return this.getClass().getSimpleName() + ": Se reemplazó " +
+                BinaryOperatorKindToString.get(op.getKind()) + " por " + BinaryOperatorKindToString.get(getReplacement(op.getKind())) +
+                " en la línea " + op.getPosition().getLine() + ".";
     }
 }

@@ -13,17 +13,21 @@ public class TrueConditionalsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
         // COMPLETAR
-        return false;
+        return (candidate instanceof CtIf);
     }
 
     @Override
     public void process(CtElement candidate) {
         // COMPLETAR
+        CtIf condition = (CtIf) candidate;
+        condition.setCondition(condition.getFactory().createLiteral(true));
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
         // COMPLETAR
-        return null;
+        CtIf op = (CtIf) candidate;
+        return this.getClass().getSimpleName() + ": Se reemplazó " +
+                op.getCondition() + " por True en la línea " + op.getPosition().getLine() + ".";
     }
 }

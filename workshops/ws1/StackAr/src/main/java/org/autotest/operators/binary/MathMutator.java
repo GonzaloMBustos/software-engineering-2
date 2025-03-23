@@ -40,8 +40,6 @@ public class MathMutator extends MutationOperator {
     }
 
     public BinaryOperatorKind getReplacement(BinaryOperatorKind kind) {
-        // This are not all possible combinations, should we consider all possible combinations?
-        // How about division by zero?
         switch (kind) {
             case PLUS:
                 return BinaryOperatorKind.MINUS;
