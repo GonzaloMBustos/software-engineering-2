@@ -16,17 +16,41 @@ public class OneConstantMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
         // COMPLETAR
-        return false;
+        if (!(candidate instanceof CtLiteral)) {
+            return false;
+        }
+
+        CtLiteral op = (CtLiteral)candidate;
+        String type = op.getType().toString();
+        List<String> targetTypes = Arrays.asList(
+                "int"
+        );
+
+        if (!targetTypes.contains(type)) {
+            return false;
+        }
+
+        if (op.getValue().toString().equals("1")) {
+            // Para evitar generar mutantes inválidos, ignoramos los literales que ya son 1.
+            return false;
+        }
+
+        return true;
     }
 
     @Override
     public void process(CtElement candidate) {
         // COMPLETAR
+        CtLiteral op = (CtLiteral)candidate;
+        op.setValue(op.getFactory().Code().createLiteral(1));
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
         // COMPLETAR
-        return null;
+        CtLiteral op = (CtLiteral)candidate;
+        return this.getClass().getSimpleName() + ": Se reemplazó " +
+                op.getValue().toString() + " por 1" +
+                " en la línea " + op.getPosition().getLine() + ".";
     }
 }
