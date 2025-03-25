@@ -16,7 +16,6 @@ import java.util.List;
 public class FalseReturnsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
         if (!(candidate instanceof CtReturn)) {
             return false;
         }
@@ -39,14 +38,12 @@ public class FalseReturnsMutator extends MutationOperator {
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
         CtReturn op = (CtReturn)candidate;
         op.setReturnedExpression(op.getFactory().Code().createLiteral(false));
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
         CtReturn op = (CtReturn)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
                 op.getReturnedExpression().toString() + " por false " +
