@@ -11,7 +11,6 @@ public class StackTests3 extends MutationAnalysisRunner {
         return false;
     }
 
-    // Tests de StackTests2.java
     public void testSizeIncreasesByOne() throws Exception {
         Stack stack = createStack();
         assertEquals(0, stack.size());
@@ -26,7 +25,7 @@ public class StackTests3 extends MutationAnalysisRunner {
 
     public void testConstructorWithSpecifiedCapacity() throws Exception {
         Stack stack = createStack(5);
-        // Este test no aporta ninguna asercion por lo tanto no mata mutantes, ni tampoco aporta al coverage
+        // Este test no aporta ninguna aserción por lo tanto no mata mutantes, ni tampoco aporta al coverage
         // ya que hay otros tests que pasan por esa misma linea.
     }
 
@@ -63,8 +62,9 @@ public class StackTests3 extends MutationAnalysisRunner {
         assertEquals("[42,43]", stack.toString());
     }
 
-    // COMPLETAR
-    public void testPushOverLimit() throws Exception {
+    // Test agregados
+    
+    public void testPushThrowsExceptionWhenOverLimit() throws Exception {
         Stack stack = createStack(1);
         stack.push(42);
         assertThrows(IllegalStateException.class, () -> {
@@ -72,7 +72,7 @@ public class StackTests3 extends MutationAnalysisRunner {
         });
     }
 
-    public void testPopFromEmptyStack() throws Exception {
+    public void testPopThrowsExceptionWhenStackIsEmpty() throws Exception {
         Stack stack = createStack();
         Exception e = assertThrows(IllegalStateException.class, stack::pop);
         StackTraceElement[] stackTrace = e.getStackTrace();
@@ -80,23 +80,18 @@ public class StackTests3 extends MutationAnalysisRunner {
         assertEquals(triggeringMethod.getMethodName(), "pop");
     }
 
-    public void testTopFromEmptyStack() throws Exception {
+    public void testTopThrowsExceptionWhenStackIsEmpty() throws Exception {
         Stack stack = createStack();
         assertThrows(IllegalStateException.class, stack::top);
     }
 
-    public void testTopNonEmptyStack() throws Exception {
+    public void testTopReturnsCorrectElementWhenStackIsNonEmpty() throws Exception {
         Stack stack = createStack();
         stack.push(42);
         assertEquals(42, stack.top());
     }
 
-//    public void testHashCodeEmptyStack() throws Exception {
-//        Stack stack = createStack();
-//        stack.hashCode();
-//    }
-
-    public void testHashCodeNonEmptyStack() throws Exception {
+    public void testHashCodeReturnsCorrectValueForNonEmptyStack() throws Exception {
         Stack stack = createStack(2);
         Object[] elems = new Object[2];
         final int prime = 31;
@@ -106,62 +101,57 @@ public class StackTests3 extends MutationAnalysisRunner {
         assertEquals(result, stack.hashCode());
     }
 
-    public void testEqualsEmptyStack() throws Exception {
+    public void testEqualsReturnsTrueForTwoEmptyStacks() throws Exception {
         Stack stack = createStack();
-        Stack other = createStack();
-        assertTrue(stack.equals(other));
+        Stack otherStack = createStack();
+        assertTrue(stack.equals(otherStack));
     }
 
-    public void testEqualsSameStack() throws Exception {
+    public void testEqualsReturnsTrueWhenComparingStackWithItself() throws Exception {
         Stack stack = createStack();
         assertTrue(stack.equals(stack));
     }
 
-    public void testEqualsNullObject() throws Exception {
+    public void testEqualsReturnsFalseWhenComparingWithNull() throws Exception {
         Stack stack = createStack();
         assertFalse(stack.equals(null));
     }
 
-    public void testEqualsStackAgainsArray() throws Exception {
+    public void testEqualsReturnsFalseWhenComparingStackWithArray() throws Exception {
         Stack stack = createStack();
         Object[] array = new Object[0];
         assertFalse(stack.equals(array));
     }
 
-    public void testEqualsDifferentStacks() throws Exception {
-        Stack stackA = createStack();
-        stackA.push(1);
-        Stack stackB = createStack();
-        stackB.push(2);
+    public void testEqualsReturnsFalseForDifferentStacks() throws Exception {
+        Stack stack = createStack();
+        stack.push(1);
+        Stack otherStack = createStack();
+        otherStack.push(2);
 
-        assertFalse(stackA.equals(stackB));
+        assertFalse(stack.equals(otherStack));
     }
 
-    public void testConstructorWithSpecifiedCapacityOverZero() throws Exception {
+    public void testConstructorDoesNotThrowExceptionWhenCapacityIsZero() throws Exception {
         Stack stack = createStack(0);
         assertTrue(stack.isEmpty());
-        // Este test chequea que NO SE TRIGGEREE UNA EXCEPCION cuando la capacidad es cero.
+        // Este test verifica que el constructor no lance una excepción cuando se inicializa una
+        // pila con capacidad cero y que la pila esté vacía tras la inicialización.
     }
 
-    public void testIsPopReturnsDeletedElement() throws Exception {
+    public void testPopReturnsCorrectElement() throws Exception {
         Stack stack = createStack(1);
         stack.push(42);
         Object top = stack.pop();
         assertEquals(top, 42);
     }
 
-    public void testStackCreationDefaultsToCapacity10() throws Exception {
+    public void testStackCreationDefaultsToCapacity10AndIsFull() throws Exception {
         Stack stack = createStack();
         for (int i = 0; i < 10; i++) {
             stack.push(i);
         }
         assertTrue(stack.isFull());
     }
-
-    // Equivalentes:
-    // - StackArMutated3396 (TrueReturnsMutator: Se reemplazó false por true en la línea 82.) => readIndex inaccessible
-    // - StackArMutated9417 (FalseConditionalsMutator: Se reemplazó this == obj por False en la línea 72.) => same object cannot have different attributes
-    // - StackArMutated8246 (FalseConditionalsMutator: Se reemplazó readIndex != other.readIndex por False en la línea 81.) => readIndex inaccessible
-    // - StackArMutated7722 (MathMutator: Se reemplazó * por / en la línea 65.) => 31 * 1 == 31 / 1. Son valores hardcodeados, por lo tanto es indetectable
 
 }
