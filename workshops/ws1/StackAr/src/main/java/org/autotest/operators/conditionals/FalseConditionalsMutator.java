@@ -14,20 +14,17 @@ import spoon.reflect.declaration.CtElement;
 public class FalseConditionalsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
         return (candidate instanceof CtIf);
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
         CtIf condition = (CtIf) candidate;
         condition.setCondition(condition.getFactory().createLiteral(false));
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
         CtIf op = (CtIf) candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
                 op.getCondition() + " por False en la línea " + op.getPosition().getLine() + ".";
