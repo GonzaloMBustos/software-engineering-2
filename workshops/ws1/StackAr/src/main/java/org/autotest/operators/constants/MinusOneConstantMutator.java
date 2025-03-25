@@ -30,10 +30,13 @@ public class MinusOneConstantMutator extends MutationOperator {
         }
 
         String parentNodeCode = op.getParent().toString();
-        // No usamos op.getValue().toString() para obtener el valor del literal sino que miramos el parent porque
-        // Spoon separa los literales negativos en dos nodos: el operador de negación y el literal.
+        // No utilizamos op.getValue().toString() para obtener el valor del literal, sino que revisamos el nodo padre,
+        // ya que Spoon representa los literales negativos como dos nodos: uno para el operador de negación y otro
+        // para el valor literal. En este caso, verificamos si el nodo padre contiene "-1" para evitar generar 
+        // mutantes inválidos, ya que transformar un literal que ya es -1 podría resultar en una expresión 
+        // inválida como "--1".
         if (parentNodeCode.contains("-1")) {
-            // Para evitar generar mutantes inválidos, ignoramos los literales que ya son -1, ya que produciría "--1"
+            // Para evitar lo comentado anteriormente excluimos el caso.
             return false;
         }
 
