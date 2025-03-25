@@ -17,7 +17,6 @@ import java.util.List;
 public class MathMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
         if (!(candidate instanceof CtBinaryOperator)) {
             return false;
         }
@@ -34,7 +33,6 @@ public class MathMutator extends MutationOperator {
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
         CtBinaryOperator op = (CtBinaryOperator)candidate;
         op.setKind(getReplacement(op.getKind()));
     }
@@ -55,7 +53,6 @@ public class MathMutator extends MutationOperator {
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
         CtBinaryOperator op = (CtBinaryOperator)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
                 BinaryOperatorKindToString.get(op.getKind()) + " por " + BinaryOperatorKindToString.get(getReplacement(op.getKind())) +
