@@ -20,7 +20,6 @@ import java.util.List;
 public class IncrementsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
         if (!(candidate instanceof CtUnaryOperator)) {
             return false;
         }
@@ -37,7 +36,6 @@ public class IncrementsMutator extends MutationOperator {
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
         CtUnaryOperator op = (CtUnaryOperator)candidate;
         op.setKind(getReplacement(op.getKind()));
     }
@@ -58,7 +56,6 @@ public class IncrementsMutator extends MutationOperator {
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
         CtUnaryOperator op = (CtUnaryOperator)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
                 UnaryOperatorKindToString.get(op.getKind()) + " por " + UnaryOperatorKindToString.get(getReplacement(op.getKind())) +
