@@ -15,7 +15,6 @@ import java.util.List;
 public class OneConstantMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
         if (!(candidate instanceof CtLiteral)) {
             return false;
         }
@@ -40,14 +39,12 @@ public class OneConstantMutator extends MutationOperator {
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
         CtLiteral op = (CtLiteral)candidate;
         op.setValue(op.getFactory().Code().createLiteral(1));
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
         CtLiteral op = (CtLiteral)candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
                 op.getValue().toString() + " por 1" +
