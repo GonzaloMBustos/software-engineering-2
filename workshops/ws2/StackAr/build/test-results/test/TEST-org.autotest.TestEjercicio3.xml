@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.autotest.TestEjercicio3" tests="19" skipped="0" failures="0" errors="0" timestamp="2025-03-26T23:08:01" hostname="gb7" time="0.034">
+  <properties/>
+  <testcase name="testIsFullMethod()" classname="org.autotest.TestEjercicio3" time="0.011"/>
+  <testcase name="testHashCodeReturnsCorrectValueForNonEmptyStackAr()" classname="org.autotest.TestEjercicio3" time="0.004"/>
+  <testcase name="testEqualsReturnsTrueForTwoEmptyStackArs()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testTopThrowsExceptionWhenStackArIsEmpty()" classname="org.autotest.TestEjercicio3" time="0.005"/>
+  <testcase name="testStackArCreationDefaultsToCapacity10AndIsFull()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testConstructorWithNegativeCapacity()" classname="org.autotest.TestEjercicio3" time="0.002"/>
+  <testcase name="testPopReturnsCorrectElement()" classname="org.autotest.TestEjercicio3" time="0.003"/>
+  <testcase name="testSizeIncreasesByOne()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testEqualsReturnsFalseForDifferentStackArs()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testPushThrowsExceptionWhenOverLimit()" classname="org.autotest.TestEjercicio3" time="0.002"/>
+  <testcase name="testTopReturnsCorrectElementWhenStackArIsNonEmpty()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testEqualsReturnsFalseWhenComparingStackArWithArray()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testIsEmptyMethod()" classname="org.autotest.TestEjercicio3" time="0.001"/>
+  <testcase name="testEqualsReturnsTrueWhenComparingStackArWithItself()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testConstructorWithSpecifiedCapacity()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testEqualsReturnsFalseWhenComparingWithNull()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testToStringMethod()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testDefaultConstructor()" classname="org.autotest.TestEjercicio3" time="0.0"/>
+  <testcase name="testConstructorDoesNotThrowExceptionWhenCapacityIsZero()" classname="org.autotest.TestEjercicio3" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
