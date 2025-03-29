@@ -35,7 +35,6 @@ public class StackAr {
 	@CheckRep
 	public boolean repOK() {
 		try {
-			// COMPLETAR
 			for (int i = this.readIndex + 1; i < this.elems.length; i++) {
 				if (this.elems[i] != null) {
 					return false;
