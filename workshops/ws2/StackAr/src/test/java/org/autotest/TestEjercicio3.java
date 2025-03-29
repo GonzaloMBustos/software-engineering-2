@@ -1,10 +1,10 @@
 package org.autotest;
 
-import org.junit.jupiter.api.Test; // Use this for JUnit 5 (or JUnit 4 equivalent: import org.junit.Test)
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*; // Assertions for cleaner tests
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestEjercicio3 {
 
@@ -25,8 +25,6 @@ public class TestEjercicio3 {
     @Test
     public void testConstructorWithSpecifiedCapacity() throws Exception {
         StackAr StackAr = new StackAr(5);
-        // Este test no aporta ninguna aserción por lo tanto no mata mutantes, ni tampoco aporta al coverage
-        // ya que hay otros tests que pasan por esa misma linea.
     }
 
     @Test
@@ -65,8 +63,6 @@ public class TestEjercicio3 {
         StackAr.push(43);
         assertEquals("[42,43]", StackAr.toString());
     }
-
-    // Test agregados
 
     @Test
     public void testPushThrowsExceptionWhenOverLimit() throws Exception {
