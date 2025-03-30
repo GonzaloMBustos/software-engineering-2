@@ -11,7 +11,7 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
    - Respuesta: Randoop produjo 616 casos de test.
 
 2. ¿Hay casos de test que fallan?
-   - Respuesta: No, ninguno de los test producidos por Randoop fallo.
+   - Respuesta: No, ninguno de los test producidos por Randoop falló.
 
 3. ¿Cuál es el instruction coverage alcanzado por los tests generados para la clase StackAr?
    - Respuesta: El instruction coverage alcanzado por los tests generados fue de 83%.
@@ -20,11 +20,13 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 ## Ejercicio 2: Validación de StackAr y detección de fallas
 
-ACLARACIÓN: Durante la clase probamos Randoop por 1 minuto y no nos generó ningún caso de test con falla. Consultamos con el JTP y nos sugirió que probáramos aumentando el tiempo. Probamos con 3 minutos y recién ahí tuvimos casos de test que fallaron.
+ACLARACIÓN: Durante la clase probamos Randoop por 1 minuto en distintas computadoras, con distintas versiones de nuestro codigo, y no nos generó ningún caso de test con falla.
+Consultamos con el JTP y nos sugirió que probáramos aumentando el tiempo. Probamos con 3 minutos y recién ahí tuvimos casos de test que fallaron.
+Sin embargo, luego de hacer la prueba con 3 minutos, intentamos regresando a 1 minuto y si se lograron encontrar errores.
 
 1. Ejecutar Randoop por 1 minuto sobre StackAr y correr los tests generados:
    - ¿Hay casos de test que fallan? ¿Cuántos?
-     - Respuesta: Los casos de test que fallaro fueron 330.
+     - Respuesta: Los casos de test que fallaron fueron 330.
    - Si hay tests que fallan, analizar y explicar por qué fallan.
      - Respuesta: La falla se debía a que el método pop solo disminuía el readIndex, lo cual hacía que mirara a la siguiente posición del StackAr, pero nunca eliminaba los elementos.
        
