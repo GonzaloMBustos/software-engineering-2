@@ -8,13 +8,13 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Generación de Tests con Randoop
 
 1. ¿Cuántos casos de test produjo Randoop?
-   - Respuesta: Randoop produjo 616 casos de test.
+   - Respuesta: Randoop produjo 579 casos de test.
 
 2. ¿Hay casos de test que fallan?
    - Respuesta: No, ninguno de los test producidos por Randoop falló.
 
 3. ¿Cuál es el instruction coverage alcanzado por los tests generados para la clase StackAr?
-   - Respuesta: El instruction coverage alcanzado por los tests generados fue de 83%.
+   - Respuesta: El instruction coverage alcanzado por los tests generados fue de 72%.
 
 ---
 
