@@ -1,0 +1,8 @@
+(declare-const c1 Bool)
+(declare-const a Int)
+(declare-const b Int)
+(declare-const c Int)
+(assert (= c1(or (<= a 0) (or (<= b 0) (<= c 0)))))
+(assert (not c1))
+(check-sat)
+(get-model)
