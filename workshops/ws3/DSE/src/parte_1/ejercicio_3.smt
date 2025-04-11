@@ -1,5 +1,7 @@
 ; Ejercicio 3
-; COMPLETAR
+; a1 = 16 mod 2
+; a2 = 16 dividido por 4
+; a3 = resto de la división entera de 16 por 5
 
 (declare-const a1 Real)
 (declare-const a2 Real)
