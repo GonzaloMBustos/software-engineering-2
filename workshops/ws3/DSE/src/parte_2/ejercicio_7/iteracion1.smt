@@ -1,0 +1,6 @@
+(declare-const c1_0 Bool)
+(declare-const n Int)
+(assert (= c1_0 (< 0 n)))
+(assert c1_0)
+(check-sat)
+(get-model)
