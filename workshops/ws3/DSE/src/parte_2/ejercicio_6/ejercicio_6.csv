@@ -9,7 +9,7 @@ Iteración,Input Concreto,Condición de Ruta,Especificación para Z3,Resultado Z
 ,,,iteracion3_2.smt,unsat,
 ,,,iteracion3_3.smt,unsat,
 ,,,iteracion3_4.smt,k=-5.0,
-4,k=-5.0,c1_0 and c2_0 and c1_1 and not c2_1 and c1_2 and not c2_2 and not c1_3,iteracion4_0.smt,unsat,,
+4,k=-5.0,c1_0 and c2_0 and c1_1 and not c2_1 and c1_2 and not c2_2 and not c1_3,iteracion4_0.smt,unsat,
 ,,,iteracion4_1.smt,unsat,
 ,,,iteracion4_2.smt,unsat,
 ,,,iteracion4_3.smt,unsat,

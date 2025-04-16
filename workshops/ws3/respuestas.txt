@@ -1,3 +1,3 @@
-5b. El branch coverage es del 100%
+5b. El branch coverage es del 100% dado que todas las posibles ramas o decisiones de los distintos ifs son cubiertas por alguna iteracion.
 6b. El branch coverage es del 100% dado que el branch coverage se analiza respecto del CFG y no el arbol de computo,
-por lo tanto al cubrirse en alguna iteracion la decision por true y por false del for y del if, el branch coverage es del 100%
+por lo tanto al cubrirse en alguna iteracion la decision por true y por false del for, y a su vez cubrirse la decision por true y por false del if, el branch coverage es del 100%
