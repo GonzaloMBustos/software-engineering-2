@@ -61,7 +61,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = lhs == rhs
                 if comparison_result:
                     distance_true = 0
-                    distance_false = abs(lhs - rhs)
+                    distance_false = K
                 else:
                     distance_true = abs(lhs - rhs)
                     distance_false = 0
@@ -69,7 +69,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = lhs != rhs
                 if comparison_result:
                     distance_true = 0
-                    distance_false = K
+                    distance_false = abs(lhs - rhs)
                 else:
                     distance_true = K
                     distance_false = 0
@@ -77,7 +77,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = lhs < rhs
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (lhs - rhs) + K
+                    distance_false = (rhs - lhs)
                 else:
                     distance_true = (lhs - rhs) + K
                     distance_false = 0
@@ -85,7 +85,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = lhs > rhs
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (rhs - lhs) + K
+                    distance_false = (lhs - rhs)
                 else:
                     distance_true = (rhs - lhs) + K
                     distance_false = 0
@@ -93,7 +93,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = lhs <= rhs
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (lhs - rhs)
+                    distance_false = (rhs - lhs) + K
                 else:
                     distance_true = (lhs - rhs)
                     distance_false = 0
@@ -101,7 +101,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = lhs >= rhs
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (rhs - lhs)
+                    distance_false = (lhs - rhs) + K
                 else:
                     distance_true = (rhs - lhs)
                     distance_false = 0
@@ -115,7 +115,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = ord(lhs) == ord(rhs)
                 if comparison_result:
                     distance_true = 0
-                    distance_false = abs(ord(lhs) - ord(rhs))
+                    distance_false = K
                 else:
                     distance_true = abs(ord(lhs) - ord(rhs))
                     distance_false = 0
@@ -123,7 +123,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = ord(lhs) != ord(rhs)
                 if comparison_result:
                     distance_true = 0
-                    distance_false = K
+                    distance_false = abs(ord(lhs) - ord(rhs))
                 else:
                     distance_true = K
                     distance_false = 0
@@ -131,7 +131,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = ord(lhs) < ord(rhs)
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (ord(lhs) - ord(rhs)) + K
+                    distance_false = (ord(rhs) - ord(lhs))
                 else:
                     distance_true = (ord(lhs) - ord(rhs)) + K
                     distance_false = 0
@@ -139,7 +139,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = ord(lhs) > ord(rhs)
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (ord(rhs) - ord(lhs)) + K
+                    distance_false = (ord(lhs) - ord(rhs))
                 else:
                     distance_true = (ord(rhs) - ord(lhs)) + K
                     distance_false = 0
@@ -147,7 +147,7 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = ord(lhs) <= ord(rhs)
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (ord(lhs) - ord(rhs))
+                    distance_false = (ord(rhs) - ord(lhs)) + K
                 else:
                     distance_true = (ord(lhs) - ord(rhs))
                     distance_false = 0
@@ -155,51 +155,66 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, int], rhs: U
                 comparison_result = ord(lhs) >= ord(rhs)
                 if comparison_result:
                     distance_true = 0
-                    distance_false = (ord(rhs) - ord(lhs))
+                    distance_false = (ord(lhs) - ord(rhs)) + K
                 else:
                     distance_true = (ord(rhs) - ord(lhs))
                     distance_false = 0
             else:
                 raise ValueError(f"Invalid operator: {op}")
         elif isinstance(rhs, Dict): # dict or Dict or Dict[str, int]
-            distances = []
+            distances_true = []
+            distances_false = []
             comparison_result = False
             if op == "Eq":
                 for key in rhs.keys():
                     comparison_result = comparison_result or ord(lhs) == ord(key)
-                    distances.append(abs(ord(lhs) - ord(key)))
+                    distances_true.append(abs(ord(lhs) - ord(key)))
+                    distances_false.append(K)
             elif op == "Ne":
                 for key in rhs.keys():
-                    comparison_result = comparison_result or ord(lhs) != ord(key)
-                    distances.append(K)
+                    distances_true.append(K)
+                    distances_false.append(abs(ord(lhs) - ord(key)))
+                    if ord(lhs) != ord(key):
+                        comparison_result = True
+                        break
             elif op == "Lt":
                 for key in rhs.keys():
                     comparison_result = comparison_result or ord(lhs) < ord(key)
-                    distances.append((ord(lhs) - ord(key)) + K)
+                    distances_true.append(abs(ord(lhs) - ord(key)) + K)
+                    distances_false.append(ord(key) - ord(lhs))
             elif op == "Gt":
                 for key in rhs.keys():
                     comparison_result = comparison_result or ord(lhs) > ord(key)
-                    distances.append((ord(key) - ord(lhs)) + K)
+                    distances_true.append(abs(ord(key) - ord(lhs)) + K)
+                    distances_false.append(ord(lhs) - ord(key))
             elif op == "Le":
                 for key in rhs.keys():
                     comparison_result = comparison_result or ord(lhs) <= ord(key)
-                    distances.append(ord(lhs) - ord(key))
+                    distances_true.append(abs(ord(lhs) - ord(key)))
+                    distances_false.append(ord(key) - ord(lhs) + K)
             elif op == "Ge":
                 for key in rhs.keys():
                     comparison_result = comparison_result or ord(lhs) >= ord(key)
-                    distances.append(ord(key) - ord(lhs))
+                    distances_true.append(abs(ord(key) - ord(lhs)))
+                    distances_false.append(ord(lhs) - ord(key) + K)
+            elif op == "In":
+                comparison_result = lhs in rhs
+                distances_false.append(K)
+                for key in rhs.keys():
+                    distances_true.append(abs(ord(lhs) - ord(key)))
             else:
                 raise ValueError(f"Invalid operator: {op}")
             
             if comparison_result:
                 distance_true = 0
-                distance_false = min(distances)
+                distance_false = min(distances_false)
             else:
-                distance_true = min(distances)
+                distance_true = min(distances_true)
                 distance_false = 0
         else:
             raise ValueError(f"Invalid expression: {rhs}")
     else:
         raise ValueError(f"Invalid expression: {lhs}")
-
+    
+    update_maps(condition_num, distance_true, distance_false)
     return comparison_result
