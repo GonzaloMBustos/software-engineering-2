@@ -1,0 +1,5 @@
+2) no usa ord() para las comparaciones de
+caracteres
+
+3) missing comparison between cgi_decode
+and cgi_decode_instrumented
