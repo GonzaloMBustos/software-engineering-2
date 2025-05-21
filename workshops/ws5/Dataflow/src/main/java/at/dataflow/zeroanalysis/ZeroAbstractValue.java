@@ -51,8 +51,22 @@ public enum ZeroAbstractValue {
      * @return the result of the addition.
      */
     public ZeroAbstractValue add(ZeroAbstractValue another) {
-          // TODO: IMPLEMENT
-          throw new UnsupportedOperationException();
+        if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
+            return ZeroAbstractValue.BOTTOM;
+        }
+        if (this == ZeroAbstractValue.TOP || another == ZeroAbstractValue.TOP) {
+            return ZeroAbstractValue.TOP;
+        }
+        if (this == ZeroAbstractValue.ZERO) {
+            return another;
+        }
+        if (another == ZeroAbstractValue.ZERO) {
+            return this;
+        }
+        if (this == another && (this == ZeroAbstractValue.NEGATIVE || this == ZeroAbstractValue.POSITIVE)) {
+            return this;
+        }
+        return ZeroAbstractValue.TOP;
     }
 
     /**
@@ -61,8 +75,17 @@ public enum ZeroAbstractValue {
      * @return the result of the division.
      */
     public ZeroAbstractValue divideBy(ZeroAbstractValue another) {
-        // TODO: IMPLEMENT
-        throw new UnsupportedOperationException();
+        if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
+            return ZeroAbstractValue.BOTTOM;
+        }
+        if (another == ZeroAbstractValue.ZERO) {
+            return ZeroAbstractValue.BOTTOM;
+        }
+        if (this == ZeroAbstractValue.ZERO && (another == ZeroAbstractValue.POSITIVE || another == ZeroAbstractValue.NEGATIVE)) {
+            return ZeroAbstractValue.ZERO;
+        }
+
+        return ZeroAbstractValue.TOP;
     }
 
     /**
@@ -71,8 +94,21 @@ public enum ZeroAbstractValue {
      * @return the result of the multiplication.
      */
     public ZeroAbstractValue multiplyBy(ZeroAbstractValue another) {
-        // TODO: IMPLEMENT
-        throw new UnsupportedOperationException();
+        if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
+            return ZeroAbstractValue.BOTTOM;
+        }
+        if (this == ZeroAbstractValue.ZERO || another == ZeroAbstractValue.ZERO) {
+            return ZeroAbstractValue.ZERO;
+        }
+        if (this == another) {
+            return ZeroAbstractValue.POSITIVE;
+        }
+        if ((this == ZeroAbstractValue.NEGATIVE && another == ZeroAbstractValue.POSITIVE)
+                || (this == ZeroAbstractValue.POSITIVE && another == ZeroAbstractValue.NEGATIVE)) {
+            return ZeroAbstractValue.NEGATIVE;
+        }
+
+        return ZeroAbstractValue.TOP;
     }
 
     /**
@@ -81,8 +117,28 @@ public enum ZeroAbstractValue {
      * @return the result of the subtraction.
      */
     public ZeroAbstractValue substract(ZeroAbstractValue another) {
-        // TODO: IMPLEMENT
-        throw new UnsupportedOperationException();
+        if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
+            return ZeroAbstractValue.BOTTOM;
+        }
+        if (this == ZeroAbstractValue.ZERO) {
+            if (another == ZeroAbstractValue.ZERO) return ZeroAbstractValue.ZERO;
+            if (another == ZeroAbstractValue.NEGATIVE) return ZeroAbstractValue.POSITIVE;
+            if (another == ZeroAbstractValue.POSITIVE) return ZeroAbstractValue.NEGATIVE;
+        }
+
+        if (another == ZeroAbstractValue.ZERO) {
+            return this;
+        }
+
+        if (this == ZeroAbstractValue.POSITIVE && another == ZeroAbstractValue.NEGATIVE) {
+            return ZeroAbstractValue.POSITIVE;
+        }
+
+        if (this == ZeroAbstractValue.NEGATIVE && another == ZeroAbstractValue.POSITIVE) {
+            return ZeroAbstractValue.NEGATIVE;
+        }
+
+        return ZeroAbstractValue.TOP;
     }
 
     /**
@@ -91,8 +147,16 @@ public enum ZeroAbstractValue {
      * @return the result of the merge.
      */
     public ZeroAbstractValue merge(ZeroAbstractValue another) {
-        // TODO: IMPLEMENT
-        throw new UnsupportedOperationException();
+        if (this == ZeroAbstractValue.BOTTOM) {
+            return another;
+        }
+        if (another == ZeroAbstractValue.BOTTOM) {
+            return this;
+        }
+        if (this == another) {
+            return this;
+        }
+        return ZeroAbstractValue.TOP;
     }
 
 }

@@ -63,8 +63,17 @@ public class ZeroAbstractState {
      */
     public ZeroAbstractState union(ZeroAbstractState another) {
         ZeroAbstractState result = new ZeroAbstractState();
-        // TODO: IMPLEMENT
-        throw new UnsupportedOperationException("Operation is not implemented yet.");
+        map.forEach( (key, value) -> {
+            result.map.put(key, value);
+        });
+        another.map.forEach( (key, value) -> {
+            if (!result.map.containsKey(key)) {
+                result.map.put(key, value);
+            } else {
+                result.map.put(key, value.merge(map.get(key)));
+            }
+        });
+        return result;
     }
 
     /**

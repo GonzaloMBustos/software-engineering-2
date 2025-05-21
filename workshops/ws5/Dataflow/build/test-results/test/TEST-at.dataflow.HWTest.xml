@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="at.dataflow.HWTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-05-21T21:10:00" hostname="gb7" time="1.15">
+  <properties/>
+  <testcase name="testTarget1()" classname="at.dataflow.HWTest" time="0.565"/>
+  <testcase name="testTarget2()" classname="at.dataflow.HWTest" time="0.087"/>
+  <testcase name="testTarget3()" classname="at.dataflow.HWTest" time="0.083"/>
+  <testcase name="testTarget4()" classname="at.dataflow.HWTest" time="0.071"/>
+  <testcase name="testTarget5()" classname="at.dataflow.HWTest" time="0.074"/>
+  <testcase name="testTarget6()" classname="at.dataflow.HWTest" time="0.115"/>
+  <testcase name="testTarget7()" classname="at.dataflow.HWTest" time="0.148"/>
+  <system-out><![CDATA[SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:00 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:01 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:01 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:01 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:01 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:01 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
+Soot started on Wed May 21 18:10:01 ART 2025
+Soot finished on Wed May 21 18:10:01 ART 2025
+Soot has run for 0 min. 0 sec.
+]]></system-out>
+  <system-err><![CDATA[[Thread-6] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7
+[Thread-10] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7
+[Thread-14] ERROR at.dataflow.Launcher - Found a possible division by zero in line 6
+[Thread-18] ERROR at.dataflow.Launcher - Found a possible division by zero in line 12
+[Thread-30] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7
+]]></system-err>
+</testsuite>
