@@ -8,7 +8,7 @@ def tournament_selection(population: List[Individual], tournament_size: int) -> 
     El tamaño del torneo es el número de individuos que competirán en el mismo.
     """
     tournament = sample(population, tournament_size)
-    winner = max(tournament, key=lambda ind: ind.get_fitness())
+    winner = min(tournament, key=lambda ind: ind.get_fitness())
     return winner
 
 def selection(selection_function, tournament_size: int, population: List[Individual]) -> Tuple[Individual, Individual]:
