@@ -37,7 +37,7 @@ class GeneticAlgorithm:
         Guarda el mejor individuo y su fitness en las variables de instancia, self.best_individual y
         self.fitness_best_individual
         """
-        best = max(population, key=lambda ind: ind.get_fitness())
+        best = min(population, key=lambda ind: ind.get_fitness())
         self.best_individual = best
         self.fitness_best_individual = best.get_fitness()
 
