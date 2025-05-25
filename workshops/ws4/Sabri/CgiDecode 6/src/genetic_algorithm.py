@@ -29,8 +29,7 @@ class GeneticAlgorithm:
         """
         Dado el fitness de un individuo, retorna True si cubre todos los objetivos.
         """
-        # TODO: COMPLETAR
-        return fitness_individual == 1.0
+        return fitness_individual == 0.0
 
     def calculate_best_individual(self, population):
         """
