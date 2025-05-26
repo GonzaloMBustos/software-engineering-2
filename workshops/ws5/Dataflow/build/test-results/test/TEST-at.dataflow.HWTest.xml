@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.dataflow.HWTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-05-21T21:10:00" hostname="gb7" time="1.15">
+<testsuite name="at.dataflow.HWTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-05-26T19:33:37" hostname="gb7" time="1.282">
   <properties/>
-  <testcase name="testTarget1()" classname="at.dataflow.HWTest" time="0.565"/>
-  <testcase name="testTarget2()" classname="at.dataflow.HWTest" time="0.087"/>
-  <testcase name="testTarget3()" classname="at.dataflow.HWTest" time="0.083"/>
-  <testcase name="testTarget4()" classname="at.dataflow.HWTest" time="0.071"/>
-  <testcase name="testTarget5()" classname="at.dataflow.HWTest" time="0.074"/>
-  <testcase name="testTarget6()" classname="at.dataflow.HWTest" time="0.115"/>
-  <testcase name="testTarget7()" classname="at.dataflow.HWTest" time="0.148"/>
+  <testcase name="testTarget1()" classname="at.dataflow.HWTest" time="0.542"/>
+  <testcase name="testTarget2()" classname="at.dataflow.HWTest" time="0.092"/>
+  <testcase name="testTarget3()" classname="at.dataflow.HWTest" time="0.129"/>
+  <testcase name="testTarget4()" classname="at.dataflow.HWTest" time="0.087"/>
+  <testcase name="testTarget5()" classname="at.dataflow.HWTest" time="0.143"/>
+  <testcase name="testTarget6()" classname="at.dataflow.HWTest" time="0.138"/>
+  <testcase name="testTarget7()" classname="at.dataflow.HWTest" time="0.143"/>
   <system-out><![CDATA[SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:00 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:37 ART 2025
+Soot finished on Mon May 26 16:33:37 ART 2025
 Soot has run for 0 min. 0 sec.
 SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:01 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:37 ART 2025
+Soot finished on Mon May 26 16:33:37 ART 2025
 Soot has run for 0 min. 0 sec.
 SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:01 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:37 ART 2025
+Soot finished on Mon May 26 16:33:38 ART 2025
 Soot has run for 0 min. 0 sec.
 SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:01 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:38 ART 2025
+Soot finished on Mon May 26 16:33:38 ART 2025
 Soot has run for 0 min. 0 sec.
 SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:01 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:38 ART 2025
+Soot finished on Mon May 26 16:33:38 ART 2025
 Soot has run for 0 min. 0 sec.
 SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:01 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:38 ART 2025
+Soot finished on Mon May 26 16:33:38 ART 2025
 Soot has run for 0 min. 0 sec.
 SCP: /home/gb7/Desktop/University/Inge2/software-engineering-2/workshops/ws5/Dataflow/build/libs/Dataflow-1.0-SNAPSHOT.jar:/home/gb7/.sdkman/candidates/java/8.0.442-amzn/jre/lib/rt.jar
-Soot started on Wed May 21 18:10:01 ART 2025
-Soot finished on Wed May 21 18:10:01 ART 2025
+Soot started on Mon May 26 16:33:38 ART 2025
+Soot finished on Mon May 26 16:33:38 ART 2025
 Soot has run for 0 min. 0 sec.
 ]]></system-out>
   <system-err><![CDATA[[Thread-6] ERROR at.dataflow.Launcher - Found a possible division by zero in line 7

@@ -60,6 +60,11 @@ public class ZeroValueVisitor extends AbstractValueVisitor<ZeroAbstractValue> {
      */
     @Override
     public void visitDivExpression(ZeroAbstractValue leftOperand, ZeroAbstractValue rightOperand) {
+        /**
+        Implementamos la función que detecta el posible riesgo de división por cero.
+        Utilizando la semantica de los simbolos del reticulado (en esta caso siendo util la semantica de maybeZeroOperand),
+        verificamos si el divisor puede ser ZERO.
+        */
         if (maybeZeroOperand(rightOperand)) {
             this.possibleDivisionByZero = true;
         }
@@ -71,6 +76,9 @@ public class ZeroValueVisitor extends AbstractValueVisitor<ZeroAbstractValue> {
      ***/
     private boolean maybeZeroOperand(ZeroAbstractValue operand)
     {
+        /**
+        Implementamos la función que de alguna manera "da semantica" o "interpreta" si el operando puede ser ZERO dependiendo del simbolo de reticulado que tenga.
+        */
         return operand == ZeroAbstractValue.ZERO || operand == ZeroAbstractValue.TOP;
     }
     /**

@@ -51,6 +51,18 @@ public enum ZeroAbstractValue {
      * @return the result of the addition.
      */
     public ZeroAbstractValue add(ZeroAbstractValue another) {
+        /**
+        Para poder realizar el ZeroAnalysis, vamos a necesitar como base implementar las operaciones entre los simbolos del reticulado.
+        En nuestro caso, el reticulado es el del signo, por lo tanto sabemos por lo visto en clase que los simbolos son:
+        - BOTTOM: ⊥
+        - POSITIVE: +
+        - ZERO: 0
+        - NEGATIVE: -
+        - TOP: ⊤
+        Y tambien sabemos por lo visto en clase cómo es que se comportan las operaciones entre ellos.
+        De esta manera, implementamos las operaciones de suma, resta, multiplicación y división tal como se especifica en las diapositivas de la clase.
+        En este caso, comenzamos con la suma.
+        */
         if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
             return ZeroAbstractValue.BOTTOM;
         }
@@ -75,6 +87,9 @@ public enum ZeroAbstractValue {
      * @return the result of the division.
      */
     public ZeroAbstractValue divideBy(ZeroAbstractValue another) {
+        /**
+        Implementamos la división.
+        */
         if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
             return ZeroAbstractValue.BOTTOM;
         }
@@ -94,6 +109,9 @@ public enum ZeroAbstractValue {
      * @return the result of the multiplication.
      */
     public ZeroAbstractValue multiplyBy(ZeroAbstractValue another) {
+        /**
+        Implementamos la multiplicación.
+        */
         if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
             return ZeroAbstractValue.BOTTOM;
         }
@@ -117,6 +135,9 @@ public enum ZeroAbstractValue {
      * @return the result of the subtraction.
      */
     public ZeroAbstractValue substract(ZeroAbstractValue another) {
+        /**
+        Implementamos la resta.
+        */
         if (this == ZeroAbstractValue.BOTTOM || another == ZeroAbstractValue.BOTTOM) {
             return ZeroAbstractValue.BOTTOM;
         }
@@ -147,6 +168,12 @@ public enum ZeroAbstractValue {
      * @return the result of the merge.
      */
     public ZeroAbstractValue merge(ZeroAbstractValue another) {
+        /**
+        Finalmente, implementamos la unión.
+        Esta operacion es necesaria para aquellos casos donde tenemos ciclos o estructuras de control donde el IN[n]/OUT[n] de un nodo n
+        depende de mas de una entrada/salida, por lo que necesitamos definir la union entre los valores resultantes del estudio de ZeroAnalysis de ambos nodos.
+        Es decir, nos ayuda en los casos donde tenemos que actualizar el simbolo analizado para cada variable en cada nodo.
+        */
         if (this == ZeroAbstractValue.BOTTOM) {
             return another;
         }

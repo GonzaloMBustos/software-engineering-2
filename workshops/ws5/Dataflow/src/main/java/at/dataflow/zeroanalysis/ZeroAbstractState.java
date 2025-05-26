@@ -62,6 +62,12 @@ public class ZeroAbstractState {
      * @return the union of this state with another state.
      */
     public ZeroAbstractState union(ZeroAbstractState another) {
+        // Implementamos la unión de dos estados, usando el hecho de que ambos son HashMaps iterables.
+        // Para esto, iteramos sobre ambos HashMaps y agregamos los valores a un nuevo HashMap, usando el metodo merge de ZeroAbstractValue.
+        // Utilizando la misma logica que en el metodo de union de ZeroAbstractValue, si nos encontramos en una situacion donde tenemos que reflejar el estado analizado
+        // de las distintas variables del programa, y en los dos distintos estados tenemos distintos valores para la misma variable, tenemos que poder usar la 
+        // definicion de union provista para poder definir el nuevo estado general.
+        // De esta manera, aquellas variables que ambos estados compartan, deberan ser unificadas, y aquellas que no, simplemente se agregan al nuevo estado.
         ZeroAbstractState result = new ZeroAbstractState();
         map.forEach( (key, value) -> {
             result.map.put(key, value);
