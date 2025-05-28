@@ -58,6 +58,10 @@ public class PointsToGraph {
      * @return
      */
     public Set<Node> getNodesForVariable(String variableName) {
+        /*
+        Para obtener los nodos apuntados por alguna variable es suficiente con obtener el value del mapping del grafo
+        dado que representa el L(x), siendo x en este caso el variable name.
+        **/
         return mapping.get(variableName);
     }
 
@@ -67,6 +71,15 @@ public class PointsToGraph {
      * @param nodes
      */
     public void setNodesForVariable(String variableName, Set<Node> nodes) {
+        /*
+        Para setear aquellos nodos que apunta una variable, es necesario considerar que los nodos sean agregados por primera vez,
+        por lo tanto deben ser agregados al conjunto de nodos N del grafo.
+        A su vez, es necesario poder "conectar" la variable con los nodos, por lo tanto, actualizamos el mapping con el nombre
+        de la variable y el conjunto de nodos al que apunta.
+        En caso de que la variable ya existiera en el grafo y ya estuviera apuntando a nodos, esta funcion actualizaria
+        por completo los nodos a los que apunta si el conjunto de nodos recibido por parametro no incluye ninguno de los anteriores.
+        Esta funcionalidad es esperada, dado que se actualizan los nodos accesibles desde la variable.
+        **/
         // como son conjuntos, agregar nodos no necesita chequearque no esten, dado que se encarga de los duplicados
         this.nodes.addAll(nodes);
         mapping.put(variableName, nodes);
@@ -79,6 +92,10 @@ public class PointsToGraph {
      * @param rightNode
      */
     public void addEdge(Node leftNode, String fieldName, Node rightNode) {
+        /*
+        Para agregar un eje, es suficiente con crear el nuevo eje, en nuestro caso representado por el objeto Axis
+        y agregarlo al conjunto axis del grafo que representa el conjunto E del PTG.
+         */
         Axis newEdge = new Axis(leftNode, fieldName, rightNode);
         axis.add(newEdge);
     }
@@ -90,6 +107,12 @@ public class PointsToGraph {
      * @return
      */
     public Set<Node> getReachableNodesByField(Node node, String fieldName) {
+        /*
+        Para conseguir los nodos que estan referenciados desde un nodo a traves de un Field,
+        es suficiente recorrer todos los elementos de axis (nuestro conjunto E de ejes), y como PTG es un grafo
+        dirigido, obtener todos aquellos que el leftNode (es decir, el nodo de origen) sea igual al nodo provisto
+        por parametro.
+         */
         Set<Node> reachableNodes = new HashSet<>();
         for (Axis axis : axis) {
             if (axis.leftNode.equals(node) && axis.fieldName.equals(fieldName)) reachableNodes.add(axis.rightNode);
@@ -114,6 +137,13 @@ public class PointsToGraph {
      * @param in el grafo a unir
      */
     public void union(PointsToGraph in) {
+        /*
+        Para hacer la union de 2 grafos, es suficiente implementarlo tal como se define la union en el enunciado del taller
+        donde G1 ∪ G2 = ⟨N1 ∪ N2 , E1 ∪ E2 , L1 ∪ L2 ⟩.
+        Entonces simplemente unimos los conjuntos de Nodos N, y Ejes E, y los mappings de ambos, los unimos uno a uno, donde
+        si la variable ya esta presente en ambos, unimos el conjunto de nodos al que apunta, y sino dejamos aquella que si
+        tenga nodos apuntados desde la variable.
+         */
         this.nodes.addAll(in.nodes);
         this.axis.addAll(in.axis);
         for (Map.Entry<String, Set<Node>> entry : in.mapping.entrySet()) {

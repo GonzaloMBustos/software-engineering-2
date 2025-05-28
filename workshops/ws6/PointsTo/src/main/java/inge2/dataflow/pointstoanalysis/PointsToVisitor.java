@@ -37,6 +37,12 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processNewObject(AssignStmt stmt) {
+        /*
+        Para procesar un nuevo objeto tenemos que agregarlo al conjunto de nodos del PTG y a su vez
+        agregarlo al conjunto de nodos apuntados por la variable que es parte de la asignacion.
+        En caso de que la aparicion de la variable de asignacion sea la primera, no existiran nodos apuntados,
+        por lo tanto se le debe asignar en L(variable) un set nuevo con el nuevo nodo.
+         */
         String leftVariableName = stmt.getLeftOp().toString();
         Node nodeName = pointsToGraph.getNodeName(stmt);
 
@@ -49,6 +55,12 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processCopy(AssignStmt stmt) {
+        /*
+        Para procesar un copy simplemente hay que actualizar el conjunto de nodos al que apunta la variable left
+        a los de la variable right L(x) <- L(y).
+        Esta funcionalidad ya nos la permite la funcion de setNodesForVariable, por lo que obtenemos los nodos apuntados por
+        la rightVariable y asignarselos con setNodesForVariable al leftVariable.
+         */
         String leftVariableName = stmt.getLeftOp().toString();
         String rightVariableName = stmt.getRightOp().toString();
 
@@ -58,6 +70,10 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processStore(AssignStmt stmt) { // x.f = y
+        /*
+        Para procesar el store, tenemos que conectar aquellos nodos alcanzados por la right variable
+        a aquellos alcanzables por la leftVariable, y contectarlos a travez del fieldName.
+         */
         JInstanceFieldRef leftFieldRef = (JInstanceFieldRef) stmt.getLeftOp();
         String leftVariableName = leftFieldRef.getBase().toString();
         String fieldName = leftFieldRef.getField().getName();
@@ -73,6 +89,10 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
     }
 
     private void processLoad(AssignStmt stmt) { // x = y.f
+        /*
+        Para procesar el load, tenemos que cambiar los nodos a los que apunta la varible left, con los nodos
+        alcanzados por la variable y a traves del field f.
+         */
         String leftVariableName = stmt.getLeftOp().toString();
         JInstanceFieldRef rightFieldRef = (JInstanceFieldRef) stmt.getRightOp();
         String rightVariableName = rightFieldRef.getBase().toString();

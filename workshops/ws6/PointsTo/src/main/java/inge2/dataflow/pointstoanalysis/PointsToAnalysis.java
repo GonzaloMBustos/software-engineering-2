@@ -65,6 +65,12 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String rightVariableName) {
+        /*
+        Para ver si existe aliasing entre 2 variables es sficiente con obtener todos los nodos a los que apunte cada una de
+        ellas y ver si su interseccion es o no vacia.
+        La funcion retainAll nos permite realizar esta interseccion, pero es necesario usar un conjunto temporal
+        dado que la funcion actualiza el conjunto de la izquierda con la interseccion de ambos.
+         */
         Set<Node> leftVariableNodes = lastPointsToGraph.getNodesForVariable(leftVariableName);
         Set<Node> rightVariableNodes = lastPointsToGraph.getNodesForVariable(rightVariableName);
         Set<Node> temp = new HashSet<>(leftVariableNodes);
@@ -80,6 +86,13 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String fieldName, String rightVariableName) {
+        /*
+        De la misma manera que con el mayAlias entre dos variables, usamos la misma idea de la interseccion
+        y la misma funcion de retainAll, pero en este caso comparamos el conjunto de aquellos nodos que son alcanzables
+        mediante los nodos apuntados por leftVariableName a traves del field fieldName, por lo que tenemos que conseguir primero
+        el conjunto de todos estos nodos alcanzables y luego hacer la interseccion con los nodos alcanzables por la variable
+        rightVariableName.
+         */
         Set<Node> rightVariableNodes = lastPointsToGraph.getNodesForVariable(rightVariableName);
         Set<Node> leftVariableNodes = lastPointsToGraph.getNodesForVariable(leftVariableName);
         Set<Node> allReacheableNodeByField = new HashSet<>();
