@@ -58,8 +58,7 @@ public class PointsToGraph {
      * @return
      */
     public Set<Node> getNodesForVariable(String variableName) {
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        return mapping.get(variableName);
     }
 
     /**
@@ -68,8 +67,8 @@ public class PointsToGraph {
      * @param nodes
      */
     public void setNodesForVariable(String variableName, Set<Node> nodes) {
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        this.nodes.addAll(nodes);
+        mapping.put(variableName, nodes);
     }
 
     /**
@@ -79,8 +78,8 @@ public class PointsToGraph {
      * @param rightNode
      */
     public void addEdge(Node leftNode, String fieldName, Node rightNode) {
-         // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Axis newEdge = new Axis(leftNode, fieldName, rightNode);
+        axis.add(newEdge);
     }
 
     /**
@@ -90,8 +89,11 @@ public class PointsToGraph {
      * @return
      */
     public Set<Node> getReachableNodesByField(Node node, String fieldName) {
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> reachableNodes = new HashSet<>();
+        for (Axis axis : axis) {
+            if (axis.leftNode.equals(node) && axis.fieldName.equals(fieldName)) reachableNodes.add(axis.rightNode);
+        }
+        return reachableNodes;
     }
 
     /**
@@ -111,7 +113,17 @@ public class PointsToGraph {
      * @param in el grafo a unir
      */
     public void union(PointsToGraph in) {
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        this.nodes.addAll(in.nodes);
+        this.axis.addAll(in.axis);
+        for (Map.Entry<String, Set<Node>> entry : in.mapping.entrySet()) {
+            String key = entry.getKey();
+            Set<Node> nodes = entry.getValue();
+
+            if (mapping.containsKey(key)) {
+                mapping.get(key).addAll(nodes);
+            } else {
+                mapping.put(key, new HashSet<>(nodes)); // Use a new set to avoid aliasing
+            }
+        }
     }
 }

@@ -65,8 +65,11 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String rightVariableName) {
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> leftVariableNodes = lastPointsToGraph.getNodesForVariable(leftVariableName);
+        Set<Node> rightVariableNodes = lastPointsToGraph.getNodesForVariable(rightVariableName);
+        Set<Node> temp = new HashSet<>(leftVariableNodes);
+        temp.retainAll(rightVariableNodes);
+        return !temp.isEmpty();
     }
 
     /**
@@ -77,7 +80,14 @@ public class PointsToAnalysis extends ForwardFlowAnalysis<Unit, PointsToGraph> {
      * @return
      */
     public boolean mayAlias(String leftVariableName, String fieldName, String rightVariableName) {
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> rightVariableNodes = lastPointsToGraph.getNodesForVariable(rightVariableName);
+        Set<Node> leftVariableNodes = lastPointsToGraph.getNodesForVariable(leftVariableName);
+        Set<Node> allReacheableNodeByField = new HashSet<>();
+        for (Node leftVariableNode : leftVariableNodes) {
+            Set<Node> nodesReachedByField = lastPointsToGraph.getReachableNodesByField(leftVariableNode, fieldName);
+            allReacheableNodeByField.addAll(nodesReachedByField);
+        }
+        allReacheableNodeByField.retainAll(rightVariableNodes);
+        return !allReacheableNodeByField.isEmpty();
     }
 }

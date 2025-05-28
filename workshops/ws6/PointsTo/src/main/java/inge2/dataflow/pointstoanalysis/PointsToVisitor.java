@@ -40,16 +40,18 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
         String leftVariableName = stmt.getLeftOp().toString();
         Node nodeName = pointsToGraph.getNodeName(stmt);
 
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> variableNodes = pointsToGraph.getNodesForVariable(leftVariableName);
+        variableNodes.add(nodeName);
+        pointsToGraph.setNodesForVariable(leftVariableName, variableNodes); // si hace referencia en vez de copia creo que se rompe
     }
 
     private void processCopy(AssignStmt stmt) {
         String leftVariableName = stmt.getLeftOp().toString();
         String rightVariableName = stmt.getRightOp().toString();
 
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> rightVariableNodes = pointsToGraph.getNodesForVariable(rightVariableName);
+        pointsToGraph.setNodesForVariable(leftVariableName, rightVariableNodes);
+
     }
 
     private void processStore(AssignStmt stmt) { // x.f = y
@@ -58,8 +60,13 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
         String fieldName = leftFieldRef.getField().getName();
         String rightVariableName = stmt.getRightOp().toString();
 
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> rightVariableNodes = pointsToGraph.getNodesForVariable(rightVariableName);
+        Set<Node> leftVariableNodes = pointsToGraph.getNodesForVariable(leftVariableName);
+        for (Node leftVariableNode : leftVariableNodes) {
+            for (Node rightVariableNode : rightVariableNodes) {
+                pointsToGraph.addEdge(leftVariableNode, fieldName, rightVariableNode);
+            }
+        }
     }
 
     private void processLoad(AssignStmt stmt) { // x = y.f
@@ -68,7 +75,12 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
         String rightVariableName = rightFieldRef.getBase().toString();
         String fieldName = rightFieldRef.getField().getName();
 
-        // TODO: IMPLEMENTAR
-         throw new UnsupportedOperationException("Not implemented yet");
+        Set<Node> rightVariableNodes = pointsToGraph.getNodesForVariable(rightVariableName);
+        Set<Node> newVariableNodes = new HashSet<>();
+        for (Node rightVariableNode : rightVariableNodes) {
+            Set<Node> nodesReachedByField = pointsToGraph.getReachableNodesByField(rightVariableNode, fieldName);
+            newVariableNodes.addAll(nodesReachedByField);
+        }
+        pointsToGraph.setNodesForVariable(leftVariableName, newVariableNodes);
     }
 }
