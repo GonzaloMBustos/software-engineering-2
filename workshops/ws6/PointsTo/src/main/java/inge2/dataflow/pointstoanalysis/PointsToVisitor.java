@@ -41,6 +41,9 @@ public class PointsToVisitor extends AbstractStmtSwitch<Void> {
         Node nodeName = pointsToGraph.getNodeName(stmt);
 
         Set<Node> variableNodes = pointsToGraph.getNodesForVariable(leftVariableName);
+        if (variableNodes == null) {
+            variableNodes = new HashSet<>();
+        }
         variableNodes.add(nodeName);
         pointsToGraph.setNodesForVariable(leftVariableName, variableNodes); // si hace referencia en vez de copia creo que se rompe
     }
