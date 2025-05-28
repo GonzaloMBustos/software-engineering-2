@@ -67,6 +67,7 @@ public class PointsToGraph {
      * @param nodes
      */
     public void setNodesForVariable(String variableName, Set<Node> nodes) {
+        // como son conjuntos, agregar nodos no necesita chequearque no esten, dado que se encarga de los duplicados
         this.nodes.addAll(nodes);
         mapping.put(variableName, nodes);
     }
