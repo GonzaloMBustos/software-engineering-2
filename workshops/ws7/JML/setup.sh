@@ -14,12 +14,18 @@ if [ "$UBUNTU_VERSION" == "20" ] || [ "$UBUNTU_VERSION" == "22" ] ; then
     ZIP_NAME="openjml-ubuntu-20.04-0.17.0-alpha-15.zip"
 fi
 
+DOWNLOAD_URL="https://github.com/OpenJML/OpenJML/releases/download/0.17.0-alpha-15/$ZIP_NAME"
+
+# Seteamos la URL de descarga para Ubuntu 24.
+if [ "$UBUNTU_VERSION" == "24" ] ; then
+    ZIP_NAME="openjml-ubuntu-22.04-21-0.12.zip"
+    DOWNLOAD_URL="https://github.com/OpenJML/OpenJML/releases/download/21-0.12/$ZIP_NAME"
+fi
+
 if [ -z "$ZIP_NAME" ]; then
     echo "No se pudo determinar la versión de Ubuntu."
     exit 1
 fi
-
-DOWNLOAD_URL="https://github.com/OpenJML/OpenJML/releases/download/0.17.0-alpha-15/$ZIP_NAME"
 
 # Bajamos el zip con OpenJML.
 wget $DOWNLOAD_URL
