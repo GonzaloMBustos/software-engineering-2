@@ -8,12 +8,10 @@ public class BusquedaLineal {
     //@ ensures \result <==> (\exists int i; 0 <= i < arr.length; arr[i] == elem);
     public static boolean busquedaLineal(int elem, int[] arr) {
         boolean result = false;
-
+        //@ loop_writes result, i;
         //@ maintaining 0 <= i <= arr.length;
         //@ maintaining result <==> (\exists int j; 0 <= j < i; arr[j] == elem);
         //@ decreases arr.length -i;
-        //@ loop_writes result, i;
-
         for (int i = 0; i < arr.length; i++) {
             if (elem == arr[i]) {
                 //@ assert arr[i] == elem;
