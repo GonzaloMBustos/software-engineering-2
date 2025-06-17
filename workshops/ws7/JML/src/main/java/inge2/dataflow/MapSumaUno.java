@@ -4,6 +4,9 @@ public class MapSumaUno {
 
     // Suma uno a todos los elementos de un array.
     //
+     // necesitamos que nos pasen un arreglo valido (no nulo y no de largo infinito)
+    // necesitamos limitar a los valores del array para que sumarle uno no nos haga overflow
+    // tambien queremos asegurar que nos de el mismo arreglo pero con cada elemento + 1
     //@ requires arr != null;
     //@ requires arr.length < Integer.MAX_VALUE;
     //@ requires \forall int i; 0 <= i < arr.length; Integer.MIN_VALUE <= arr[i] < Integer.MAX_VALUE;
